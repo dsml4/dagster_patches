@@ -1,0 +1,14 @@
+29a30
+> from dagster._core.execution.plan.state import KnownExecutionState
+171a173,178
+>         known_state = None
+>         if pipeline_run.parent_run_id:
+>             known_state = KnownExecutionState.build_for_reexecution(
+>                 instance=instance,
+>                 parent_run=instance.get_run_by_id(pipeline_run.parent_run_id)
+>             )
+196c203,204
+<                         cast(ExecutionStep, execution_plan.get_step_by_key(step_key))
+---
+>                         cast(ExecutionStep, execution_plan.get_step_by_key(step_key)),
+>                         known_state=known_state
