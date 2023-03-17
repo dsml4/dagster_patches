@@ -4,5 +4,6 @@ RUN pip3 install dagster dagstermill dagit
 COPY . .
 ENV DAGSTER_HOME=/app/daghome
 RUN mkdir -p $DAGSTER_HOME
+RUN apt-get update; apt-get install patch
 # dagit -h 0.0.0.0 -f /app/dag.py
 CMD ["dagit", "-h", "0.0.0.0", "-f", "/app/dag.py"]
